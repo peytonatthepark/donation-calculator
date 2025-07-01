@@ -1,1 +1,50 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Church at the Park – Donation Impact</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="slideshow">
+      <img src="images/tent.jpg" alt="Tent" class="slide active" />
+      <img src="images/hygiene.jpg" alt="Hygiene Supplies" class="slide" />
+      <img src="images/backpack.jpg" alt="Backpacks" class="slide" />
+      <img src="images/dog-food.jpg" alt="Pet Food" class="slide" />
+    </div>
+    <h1>See the Impact of Your Gift</h1>
+    <p>Your donation helps meet real, urgent needs in our community.</p>
+  </header>
+
+  <main>
+    <section class="calculator">
+      <h2>What Your Donation Provides</h2>
+      <label for="amount">Enter an amount:</label>
+      <input type="number" id="amount" placeholder="$50" min="1" />
+      <button onclick="calculateImpact()">Calculate</button>
+      <div id="results"></div>
+    </section>
+
+    <section class="cta">
+      <h3>Make a Difference Today</h3>
+      <a href="https://churchatthepark.qgiv.com" class="donate-btn">Donate Now</a>
+      <a href="/volunteer" class="volunteer-btn">Volunteer</a>
+    </section>
+
+    <section class="stories">
+      <h2>Recent Impact</h2>
+      <p><em>“I received a blanket and a hygiene kit when I needed it most.”</em> — Janelle</p>
+      <p><em>“The dog food helped me keep my companion safe while I searched for housing.”</em> — Ron</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Church at the Park is a 501(c)(3) nonprofit. All donations are tax deductible.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
