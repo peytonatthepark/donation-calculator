@@ -1,1 +1,63 @@
+body {
+  font-family: sans-serif;
+  background: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background: #ccc; /* Placeholder color */
+  padding: 1rem;
+  text-align: center;
+}
+
+.logo {
+  max-height: 50px;
+}
+
+#calculator {
+  padding: 2rem;
+  background: white;
+}
+
+.donation-input input {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.category {
+  margin-top: 1.5rem;
+}
+
+.item-button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.item-button.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+#summary {
+  margin-top: 2rem;
+}
+
+#giveButton {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background-color: #007bff; /* Placeholder */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#giveButton:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
 
