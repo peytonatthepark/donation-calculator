@@ -67,5 +67,19 @@ function updateCalculator() {
   });
 
   document.getElementById("giveButton").disabled = donationAmount === 0 || remaining === donationAmount;
+
+  document.getElementById('giveButton').addEventListener('click', function () {
+  const donationInput = document.getElementById('donationAmount');
+  const amount = parseFloat(donationInput.value);
+
+  if (isNaN(amount) || amount <= 0) {
+    alert('Please enter a valid donation amount first.');
+    return;
+  }
+
+  const qgivUrl = `https://secure.qgiv.com/for/churchatthepark-test/?amount=${amount}`;
+  window.open(qgivUrl, '_blank');
+});
+
 }
 
