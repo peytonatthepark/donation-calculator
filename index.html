@@ -3,40 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Donation Calculator</title>
+  <title>Church at the Park – Donation Calculator</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Fonts (fallback for now; use downloaded fonts if hosting locally) -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&family=Arvo&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header>
-    <img src="your-logo-here.png" alt="Church at the Park Logo" class="logo"/>
-    <h1>Build Your Donation Bundle</h1>
+<body style="background-color: #FFF5D9;">
+
+  <!-- Hero Background Image -->
+  <div id="hero-banner" style="background-image: url('CATPFaded logo trees-02.png'); background-size: cover; background-repeat: no-repeat; background-position: right; height: 200px;">
+  </div>
+
+  <header style="text-align: center; padding: 1rem;">
+    <img src="CATP_LogoName-02.png" alt="Church at the Park Logo" class="logo" style="max-width: 300px;"/>
+    <h1 style="font-family: 'Arvo', serif; color: #453D36; margin-top: 0.5rem;">Build Your Donation Bundle</h1>
   </header>
 
-  <section id="stories-feed">
-    <!-- Placeholder: Recent donations / impact stories go here -->
-    <h2>Real Stories, Real Impact</h2>
-    <div class="stories-placeholder">[Recent donations and stories feed here]</div>
+  <section id="stories-feed" style="padding: 1rem 2rem;">
+    <h2 style="font-family: 'Arvo', serif; color: #453D36;">Real Stories, Real Impact</h2>
+    <div class="stories-placeholder" style="font-family: 'Barlow Semi Condensed', sans-serif; background: #EDEAE4; padding: 1rem; border-radius: 8px;">
+      [Recent donations and stories feed will go here.]
+    </div>
   </section>
 
-  <main id="calculator">
-    <div class="donation-input">
-      <label for="donationAmount">Enter Your Donation Amount:</label>
-      <input type="number" id="donationAmount" min="1" placeholder="$50" />
+  <main id="calculator" style="padding: 2rem;">
+    <div class="donation-input" style="margin-bottom: 2rem;">
+      <label for="donationAmount" style="font-family: 'Barlow Semi Condensed', sans-serif; color: #453D36;">Enter Your Donation Amount:</label><br/>
+      <input type="number" id="donationAmount" min="1" placeholder="$50" style="padding: 0.6rem; font-size: 1.2rem; width: 200px;" />
     </div>
 
-    <div id="categories">
+    <div id="categories" style="margin-bottom: 2rem;">
       <!-- Categories will be inserted here by JavaScript -->
     </div>
 
-    <div id="summary">
-      <h3>Your Donation Bundle:</h3>
-      <ul id="bundleList"></ul>
-      <p>Remaining Balance: <span id="remaining">$0</span></p>
+    <div id="summary" style="margin-top: 2rem; background-color: #EDEAE4; padding: 1rem; border-radius: 8px;">
+      <h3 style="font-family: 'Arvo', serif; color: #453D36;">Your Donation Bundle:</h3>
+      <ul id="bundleList" style="font-family: 'Barlow Semi Condensed', sans-serif;"></ul>
+      <p style="font-family: 'Barlow Semi Condensed', sans-serif;">Remaining Balance: <span id="remaining" style="font-weight: bold;">$0</span></p>
     </div>
 
-    <button id="giveButton">Give Now</button>
-
+    <button id="giveButton" style="
+      margin-top: 2rem;
+      background-color: #80C400;
+      color: white;
+      border: none;
+      font-size: 1.2rem;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Barlow Semi Condensed', sans-serif;
+    ">Give Now</button>
   </main>
+
+  <footer style="text-align: center; padding: 1rem 0; background: #453D36; color: #FFF5D9; font-family: 'Barlow Semi Condensed', sans-serif;">
+    © 2025 Church-at-the-Park.org
+  </footer>
 
   <script src="script.js"></script>
 </body>
