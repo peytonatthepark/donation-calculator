@@ -1,14 +1,43 @@
 const items = [
+  // Outreach Supplies
   { name: "Sleeping Bag", category: "Outreach Supplies", cost: 20 },
   { name: "Tent", category: "Outreach Supplies", cost: 40 },
   { name: "Blanket", category: "Outreach Supplies", cost: 10 },
+  { name: "Pillow", category: "Outreach Supplies", cost: 8 },
+  { name: "Tarp", category: "Outreach Supplies", cost: 12 },
+
+  // Hygiene Kits
   { name: "Shampoo", category: "Hygiene Kits", cost: 5 },
+  { name: "Conditioner", category: "Hygiene Kits", cost: 5 },
+  { name: "Body Wash", category: "Hygiene Kits", cost: 5 },
+  { name: "Deodorant", category: "Hygiene Kits", cost: 4 },
+  { name: "Razors", category: "Hygiene Kits", cost: 3 },
+  { name: "Dental Care Products", category: "Hygiene Kits", cost: 6 },
   { name: "Feminine Hygiene Kit", category: "Hygiene Kits", cost: 7 },
+
+  // Baby Supplies
+  { name: "Diapers", category: "Baby Supplies", cost: 10 },
+  { name: "Wipes", category: "Baby Supplies", cost: 5 },
+  { name: "Pull-Ups", category: "Baby Supplies", cost: 10 },
+
+  // Pet Supplies
   { name: "Dog Food", category: "Pet Supplies", cost: 12 },
+  { name: "Cat Food", category: "Pet Supplies", cost: 10 },
   { name: "Cat Litter", category: "Pet Supplies", cost: 8 },
+
+  // Clothing & Accessories
   { name: "Backpack", category: "Clothing & Accessories", cost: 15 },
+  { name: "Purse", category: "Clothing & Accessories", cost: 12 },
+  { name: "Jacket", category: "Clothing & Accessories", cost: 20 },
+  { name: "Pants", category: "Clothing & Accessories", cost: 15 },
+  { name: "Shoes", category: "Clothing & Accessories", cost: 18 },
+  { name: "Underwear", category: "Clothing & Accessories", cost: 6 },
+  { name: "Socks", category: "Clothing & Accessories", cost: 4 },
+
+  // Non-Perishable Foods
   { name: "Canned Food Pack", category: "Non-Perishable Foods", cost: 10 }
 ];
+
 
 let donationAmount = 0;
 let remaining = 0;
