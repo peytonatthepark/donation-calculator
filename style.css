@@ -1,16 +1,32 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Barlow Semi Condensed', sans-serif;
   margin: 0;
   padding: 0;
-  background: #f7f7f7;
-  color: #333;
+  background-color: #FFF5D9;
+  color: #453D36;
 }
 
 header {
-  background: #005a87;
+  background: #80C400;
   color: white;
-  padding: 1em;
+  padding: 1.5em 1em;
   text-align: center;
+  position: relative;
+}
+
+.logo {
+  max-height: 80px;
+  margin-bottom: 0.5em;
+}
+
+.tagline {
+  font-size: 1.1em;
+  margin: 0.2em 0;
+}
+
+h1 {
+  font-family: 'Arvo', serif;
+  margin: 0.2em 0;
 }
 
 main {
@@ -48,7 +64,7 @@ main {
 }
 
 #summary {
-  background: #e0f7fa;
+  background: #EDEAE4;
   padding: 1em;
   border-radius: 8px;
   margin-top: 2em;
@@ -60,7 +76,7 @@ main {
 }
 
 #giveBtn {
-  background: #00796b;
+  background: #453D36;
   color: white;
   border: none;
   padding: 1em 2em;
@@ -71,9 +87,20 @@ main {
 }
 
 #giveBtn:hover {
-  background: #004d40;
+  background: #2f2822;
 }
 
 .hidden {
   display: none;
+}
+
+input[type="number"] {
+  font-size: 1.2em;
+  padding: 0.5em;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin-top: 0.5em;
 }
