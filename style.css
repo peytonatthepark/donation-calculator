@@ -1,64 +1,79 @@
 body {
   font-family: Arial, sans-serif;
-  padding: 1em;
-  background: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
   color: #333;
+}
+
+header {
+  background: #005a87;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+main {
+  padding: 1em;
   max-width: 600px;
   margin: auto;
 }
 
-header {
-  text-align: center;
+#donation-input {
   margin-bottom: 2em;
 }
 
 .category {
-  margin-bottom: 1.5em;
+  margin: 1em 0;
+  background: white;
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.category.faded {
-  opacity: 0.5;
-  pointer-events: none;
+.category label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5em;
 }
 
-input[type="range"] {
+.category-slider {
   width: 100%;
-  margin: 0.5em 0;
+  margin-bottom: 0.5em;
+}
+
+.bundle-count {
+  display: inline-block;
+  font-weight: bold;
 }
 
 #summary {
+  background: #e0f7fa;
+  padding: 1em;
+  border-radius: 8px;
   margin-top: 2em;
-  border-top: 1px solid #ccc;
-  padding-top: 1em;
 }
 
-#giveButton {
-  background-color: #007BFF;
+#summary ul {
+  list-style: none;
+  padding: 0;
+}
+
+#giveBtn {
+  background: #00796b;
   color: white;
   border: none;
   padding: 1em 2em;
   font-size: 1em;
-  margin-top: 1em;
   cursor: pointer;
-  width: 100%;
   border-radius: 5px;
+  margin-top: 1em;
 }
 
-#giveButton:hover {
-  background-color: #0056b3;
+#giveBtn:hover {
+  background: #004d40;
 }
 
 .hidden {
   display: none;
-}
-
-@media (max-width: 600px) {
-  body {
-    padding: 0.5em;
-  }
-
-  #giveButton {
-    font-size: 1.2em;
-    padding: 1.2em;
-  }
 }
