@@ -42,6 +42,11 @@ const categories = [
   }
 ];
 
+// --- Utility to safely create element IDs ---
+function slugify(str) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
 // --- Global State ---
 let donationAmount = 0;
 let categorySelections = {};
@@ -64,7 +69,7 @@ function updateUI() {
   let usedTotal = totalUsed();
 
   categories.forEach((category) => {
-    const safeId = category.name.replace(/\s+/g, '-');
+    const safeId = slugify(category.name);
     const selectedQty = categorySelections[category.name] || 0;
 
     const availableFunds = donationAmount - totalUsedExcluding(category.name);
