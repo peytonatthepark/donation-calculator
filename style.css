@@ -30,6 +30,17 @@ header {
 .category {
   margin-top: 1.5rem;
 }
+.category-box {
+  margin-bottom: 2rem;
+  background: #EDEAE4;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+input[type="range"] {
+  width: 100%;
+  margin-top: 0.5rem;
+}
 
 .item-button {
   margin: 0.5rem;
