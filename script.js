@@ -1,4 +1,3 @@
-// --- Define Categories with Bundle Costs ---
 const categories = [
   {
     name: "Hygiene Kits",
@@ -42,106 +41,85 @@ const categories = [
   }
 ];
 
-// --- Utility to safely create element IDs ---
-function slugify(str) {
-  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-}
-
-// --- Global State ---
 let donationAmount = 0;
-let categorySelections = {};
+const selectedKits = new Array(categories.length).fill(0);
 
-// --- Handle Donation Amount Input ---
-document.getElementById("donationAmount").addEventListener("input", (e) => {
-  donationAmount = parseFloat(e.target.value) || 0;
-  updateUI();
+const donationInput = document.getElementById("donationAmount");
+const categoriesSection = document.getElementById("categories");
+const summarySection = document.getElementById("summary");
+const summaryDetails = document.getElementById("summaryDetails");
+const totalSpentEl = document.getElementById("totalSpent");
+const remainingEl = document.getElementById("remaining");
+const giveButton = document.getElementById("giveButton");
+
+donationInput.addEventListener("input", () => {
+  donationAmount = parseFloat(donationInput.value) || 0;
+  renderCategories();
+  updateSummary();
+  categoriesSection.classList.remove("hidden");
+  summarySection.classList.remove("hidden");
 });
 
-// --- Core UI Update Function ---
-function updateUI() {
-  const categoriesDiv = document.getElementById("categories");
-  const bundleList = document.getElementById("bundleList");
-  const remainingDisplay = document.getElementById("remaining");
+function renderCategories() {
+  categoriesSection.innerHTML = "";
 
-  categoriesDiv.innerHTML = "";
-  bundleList.innerHTML = "";
+  categories.forEach((category, index) => {
+    const maxBundles = Math.floor(
+      (donationAmount - getTotalSpent() + selectedKits[index] * category.cost) / category.cost
+    );
 
-  let usedTotal = totalUsed();
+    const categoryDiv = document.createElement("div");
+    categoryDiv.className = "category" + (maxBundles === 0 ? " faded" : "");
 
-  categories.forEach((category) => {
-    const safeId = slugify(category.name);
-    const selectedQty = categorySelections[category.name] || 0;
+    const label = document.createElement("label");
+    label.innerText = `${category.name} ($${category.cost} per kit)`;
 
-    const availableFunds = donationAmount - totalUsedExcluding(category.name);
-    const maxBundles = Math.floor(availableFunds / category.cost);
+    const slider = document.createElement("input");
+    slider.type = "range";
+    slider.min = 0;
+    slider.max = maxBundles;
+    slider.value = selectedKits[index];
+    slider.disabled = maxBundles === 0;
 
-    const categoryBox = document.createElement("div");
-    categoryBox.classList.add("category-box");
-    categoryBox.innerHTML = `
-      <h3>${category.name} <span style="font-weight: normal;">($${category.cost} per bundle)</span></h3>
-      <input 
-        type="range" 
-        min="0" 
-        max="${maxBundles}" 
-        value="${selectedQty}" 
-        step="1"
-        id="slider-${safeId}"
-      />
-      <span> Quantity: <span id="qty-${safeId}">${selectedQty}</span></span>
-    `;
+    const count = document.createElement("span");
+    count.innerText = ` ${slider.value} kits`;
 
-    const slider = categoryBox.querySelector(`#slider-${safeId}`);
-    const qtyLabel = categoryBox.querySelector(`#qty-${safeId}`);
-
-    slider.addEventListener("input", (e) => {
-      const val = parseInt(e.target.value);
-      categorySelections[category.name] = val;
-      qtyLabel.textContent = val;
-      updateUI(); // Recalculate everything
+    slider.addEventListener("input", () => {
+      selectedKits[index] = parseInt(slider.value);
+      count.innerText = ` ${slider.value} kits`;
+      renderCategories();
+      updateSummary();
     });
 
-    categoriesDiv.appendChild(categoryBox);
+    categoryDiv.appendChild(label);
+    categoryDiv.appendChild(slider);
+    categoryDiv.appendChild(count);
+    categoriesSection.appendChild(categoryDiv);
   });
+}
 
-  // --- Update Bundle Summary ---
-  Object.entries(categorySelections).forEach(([name, qty]) => {
-    if (qty > 0) {
-      const cat = categories.find(c => c.name === name);
-      const li = document.createElement("li");
-      li.textContent = `${qty} × ${name} ($${qty * cat.cost})`;
-      bundleList.appendChild(li);
+function getTotalSpent() {
+  return selectedKits.reduce((total, count, index) => total + count * categories[index].cost, 0);
+}
+
+function updateSummary() {
+  summaryDetails.innerHTML = "";
+
+  categories.forEach((category, index) => {
+    if (selectedKits[index] > 0) {
+      const p = document.createElement("p");
+      p.innerText = `${category.name}: ${selectedKits[index]} kits`;
+      summaryDetails.appendChild(p);
     }
   });
 
-  // --- Update Remaining Balance ---
-  const remaining = donationAmount - totalUsed();
-  remainingDisplay.textContent = `$${Math.max(0, remaining).toFixed(2)}`;
+  const spent = getTotalSpent();
+  totalSpentEl.innerText = spent.toFixed(2);
+  remainingEl.innerText = (donationAmount - spent).toFixed(2);
 }
 
-// --- Total Used So Far ---
-function totalUsed() {
-  return Object.entries(categorySelections).reduce((sum, [name, qty]) => {
-    const cat = categories.find(c => c.name === name);
-    return sum + qty * cat.cost;
-  }, 0);
-}
-
-// --- Total Used Excluding a Category (used for slider limits) ---
-function totalUsedExcluding(excludeName) {
-  return Object.entries(categorySelections).reduce((sum, [name, qty]) => {
-    if (name === excludeName) return sum;
-    const cat = categories.find(c => c.name === name);
-    return sum + qty * cat.cost;
-  }, 0);
-}
-
-// --- Give Button Click (redirect to Qgiv) ---
-document.getElementById("giveButton").addEventListener("click", () => {
-  if (donationAmount <= 0) {
-    alert("Please enter a donation amount first.");
-    return;
-  }
-
-  const qgivUrl = `https://secure.qgiv.com/for/churchatthepark-test/?amount=${donationAmount}`;
-  window.open(qgivUrl, "_blank");
+giveButton.addEventListener("click", () => {
+  alert("Redirecting to Qgiv with your selection...");
+  // Optionally construct URL params or localStorage logic
+  window.location.href = "https://www.qgiv.com/donate/?form=mock";
 });
