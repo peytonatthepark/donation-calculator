@@ -41,85 +41,102 @@ const categories = [
   }
 ];
 
-let donationAmount = 0;
-const selectedKits = new Array(categories.length).fill(0);
+let totalDonation = 0;
+const quantities = {};
 
 const donationInput = document.getElementById("donationAmount");
-const categoriesSection = document.getElementById("categories");
-const summarySection = document.getElementById("summary");
-const summaryDetails = document.getElementById("summaryDetails");
+const categorySliders = document.getElementById("category-sliders");
+const summaryList = document.getElementById("summaryList");
 const totalSpentEl = document.getElementById("totalSpent");
 const remainingEl = document.getElementById("remaining");
-const giveButton = document.getElementById("giveButton");
+const giveBtn = document.getElementById("giveBtn");
+
+function updateSummary() {
+  summaryList.innerHTML = "";
+  let totalSpent = 0;
+  categories.forEach(cat => {
+    const qty = quantities[cat.name] || 0;
+    if (qty > 0) {
+      totalSpent += qty * cat.cost;
+      const li = document.createElement("li");
+      li.textContent = `${qty} x ${cat.name}`;
+      summaryList.appendChild(li);
+    }
+  });
+  totalSpentEl.textContent = totalSpent;
+  const remaining = totalDonation - totalSpent;
+  remainingEl.textContent = remaining;
+  updateSliders(remaining);
+}
+
+function updateSliders(remainingBudget) {
+  document.querySelectorAll(".category-slider").forEach(slider => {
+    const name = slider.dataset.name;
+    const cost = parseInt(slider.dataset.cost);
+    slider.disabled = remainingBudget < cost && parseInt(slider.value) === 0;
+    slider.parentElement.style.opacity = slider.disabled ? 0.4 : 1;
+  });
+}
 
 donationInput.addEventListener("input", () => {
-  donationAmount = parseFloat(donationInput.value) || 0;
-  renderCategories();
+  totalDonation = parseInt(donationInput.value) || 0;
+  document.getElementById("category-sliders").classList.remove("hidden");
+  document.getElementById("summary").classList.remove("hidden");
+  renderSliders();
   updateSummary();
-  categoriesSection.classList.remove("hidden");
-  summarySection.classList.remove("hidden");
 });
 
-function renderCategories() {
-  categoriesSection.innerHTML = "";
-
-  categories.forEach((category, index) => {
-    const maxBundles = Math.floor(
-      (donationAmount - getTotalSpent() + selectedKits[index] * category.cost) / category.cost
-    );
-
-    const categoryDiv = document.createElement("div");
-    categoryDiv.className = "category" + (maxBundles === 0 ? " faded" : "");
+function renderSliders() {
+  categorySliders.innerHTML = "";
+  categories.forEach(cat => {
+    quantities[cat.name] = 0;
+    const container = document.createElement("div");
+    container.className = "category";
 
     const label = document.createElement("label");
-    label.innerText = `${category.name} ($${category.cost} per kit)`;
+    label.textContent = `${cat.name} ($${cat.cost})`;
 
     const slider = document.createElement("input");
     slider.type = "range";
     slider.min = 0;
-    slider.max = maxBundles;
-    slider.value = selectedKits[index];
-    slider.disabled = maxBundles === 0;
+    slider.max = 100;
+    slider.value = 0;
+    slider.className = "category-slider";
+    slider.dataset.name = cat.name;
+    slider.dataset.cost = cat.cost;
 
     const count = document.createElement("span");
-    count.innerText = ` ${slider.value} kits`;
+    count.textContent = "0";
+    count.className = "bundle-count";
 
     slider.addEventListener("input", () => {
-      selectedKits[index] = parseInt(slider.value);
-      count.innerText = ` ${slider.value} kits`;
-      renderCategories();
-      updateSummary();
+      const quantity = parseInt(slider.value);
+      const currentTotal = Object.entries(quantities).reduce((sum, [name, qty]) => {
+        const category = categories.find(c => c.name === name);
+        return sum + qty * category.cost;
+      }, 0);
+      const newTotal = currentTotal - quantities[cat.name] * cat.cost + quantity * cat.cost;
+      if (newTotal <= totalDonation) {
+        quantities[cat.name] = quantity;
+        count.textContent = quantity;
+        updateSummary();
+      } else {
+        slider.value = quantities[cat.name];
+      }
     });
 
-    categoryDiv.appendChild(label);
-    categoryDiv.appendChild(slider);
-    categoryDiv.appendChild(count);
-    categoriesSection.appendChild(categoryDiv);
+    container.appendChild(label);
+    container.appendChild(slider);
+    container.appendChild(count);
+    categorySliders.appendChild(container);
   });
 }
 
-function getTotalSpent() {
-  return selectedKits.reduce((total, count, index) => total + count * categories[index].cost, 0);
-}
-
-function updateSummary() {
-  summaryDetails.innerHTML = "";
-
-  categories.forEach((category, index) => {
-    if (selectedKits[index] > 0) {
-      const p = document.createElement("p");
-      p.innerText = `${category.name}: ${selectedKits[index]} kits`;
-      summaryDetails.appendChild(p);
-    }
-  });
-
-  const spent = getTotalSpent();
-  totalSpentEl.innerText = spent.toFixed(2);
-  remainingEl.innerText = (donationAmount - spent).toFixed(2);
-}
-
-giveButton.addEventListener("click", () => {
-  alert("Redirecting to Qgiv with your selection...");
-  // Optionally construct URL params or localStorage logic
-  window.location.href = "https://www.qgiv.com/donate/?form=mock";
+giveBtn.addEventListener("click", () => {
+  const summaryText = Object.entries(quantities)
+    .filter(([_, qty]) => qty > 0)
+    .map(([name, qty]) => `${qty} x ${name}`)
+    .join(", ");
+  const donationURL = `https://www.qgiv.com/donate/?summary=${encodeURIComponent(summaryText)}`;
+  window.location.href = donationURL;
 });
