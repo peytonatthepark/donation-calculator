@@ -137,6 +137,6 @@ giveBtn.addEventListener("click", () => {
     .filter(([_, qty]) => qty > 0)
     .map(([name, qty]) => `${qty} x ${name}`)
     .join(", ");
-  const donationURL = `https://www.qgiv.com/donate/?summary=${encodeURIComponent(summaryText)}`;
+  const donationURL = `https://secure.qgiv.com/for/churchatthepark-test?summary=${encodeURIComponent(summaryText)}`;
   window.location.href = donationURL;
 });
