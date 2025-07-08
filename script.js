@@ -40,12 +40,15 @@ const items = [
 
 let donationAmount = 0;
 let remaining = 0;
-const selectedBundles = [];
+const selectedBundles = {};
 
 document.getElementById("donationAmount").addEventListener("input", (e) => {
   donationAmount = parseFloat(e.target.value) || 0;
   remaining = donationAmount;
-  selectedBundles.length = 0;
+  for (const key in selectedBundles) {
+    delete selectedBundles[key];
+  }
+
   updateCalculator();
 });
 
@@ -79,20 +82,27 @@ function updateCalculator() {
 
     button.addEventListener("click", () => {
       if (totalCost <= remaining) {
-        selectedBundles.push({ category, cost: totalCost, items: categoryItems });
+        if (selectedBundles[category]) {
+          selectedBundles[category].count += 1;
+        } else {
+          selectedBundles[category] = { count: 1, cost: totalCost };
+        }
         remaining -= totalCost;
         updateCalculator();
-      }
+        }
+
     });
 
     categoriesDiv.appendChild(button);
   });
 
-  selectedBundles.forEach(bundle => {
+  for (const [category, data] of Object.entries(selectedBundles)) {
     const li = document.createElement("li");
-    li.textContent = `${bundle.category} Bundle - $${bundle.cost}`;
+    const totalCost = data.cost * data.count;
+    li.textContent = `${category} Bundle x${data.count} - $${totalCost.toFixed(2)}`;
     bundleList.appendChild(li);
-  });
+  }
+
 
   document.getElementById("giveButton").disabled = donationAmount === 0 || remaining === donationAmount;
 }
