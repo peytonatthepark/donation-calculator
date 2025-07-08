@@ -1,3 +1,18 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
 .bundle-button {
   position: relative;
   margin: 1rem;
@@ -41,20 +56,85 @@
 .hero-section {
   background-image: url('images/CATPFaded logo trees-02.png');
   background-size: cover;
-  background-position: center;
+  background-position: center -600px;
   background-repeat: no-repeat;
-  height: 100vh; /* Full screen height */
+  height: auto; /* Full screen height */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-.overlay {
-  background-color: rgba(255, 255, 255, 0.85); /* translucent background for readability */
-  padding: 2rem;
-  border-radius: 12px;
+#summary {
+  background-color: #EDEAE4;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  margin: 2rem auto 0 auto; /* centers it */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  border-top: 2px dashed #453D36; /* receipt tear line look */
 }
+
+#summary h3 {
+  font-family: 'Arvo', serif;
+  color: #453D36;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+#summary p {
+  text-align: center;
+  font-weight: bold;
+  color: #453D36;
+}
+
+#calculator {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Donation Amount Input */
+.donation-input {
+  margin-bottom: 2rem;
+}
+
+.donation-input label {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  color: #453D36;
+  font-size: 1.1rem;
+}
+
+#donationAmount {
+  padding: 0.6rem;
+  font-size: 1.2rem;
+  width: 200px;
+  margin-top: 0.5rem;
+}
+
+/* Give Button Centered */
+.give-button-container {
+  margin-top: 2rem;
+}
+
+#giveButton {
+  background-color: #80C400;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
 
 .logo {
   max-width: 300px;
