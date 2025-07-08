@@ -1,63 +1,39 @@
-body {
-  font-family: sans-serif;
-  background: #f8f9fa;
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
-
-header {
-  background: #ccc; /* Placeholder color */
-  padding: 1rem;
-  text-align: center;
-}
-
-.logo {
-  max-height: 50px;
-}
-
-#calculator {
-  padding: 2rem;
-  background: white;
-}
-
-.donation-input input {
-  padding: 0.5rem;
-  margin-top: 0.5rem;
+.bundle-button {
+  position: relative;
+  margin: 1rem;
+  padding: 1rem 2rem;
   font-size: 1.2rem;
+  background-color: #80C400;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Barlow Semi Condensed', sans-serif;
 }
 
-.category {
-  margin-top: 1.5rem;
-}
-
-.item-button {
-  margin: 0.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-}
-
-.item-button.disabled {
+.bundle-button.disabled {
   opacity: 0.4;
   pointer-events: none;
 }
 
-#summary {
-  margin-top: 2rem;
+.bundle-button .tooltip {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 0.5rem;
+  border-radius: 5px;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: 0.9rem;
+  width: max-content;
+  max-width: 200px;
+  white-space: normal;
 }
 
-#giveButton {
-  margin-top: 2rem;
-  padding: 1rem 2rem;
-  font-size: 1.5rem;
-  background-color: #007bff; /* Placeholder */
-  color: white;
-  border: none;
-  cursor: pointer;
+.bundle-button:hover .tooltip {
+  visibility: visible;
 }
-
-#giveButton:disabled {
-  background-color: #aaa;
-  cursor: not-allowed;
-}
-
