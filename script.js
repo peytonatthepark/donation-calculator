@@ -15,7 +15,27 @@ const items = [
 
   { name: "Dog Food", category: "Pet Supplies", cost: 12 },
   { name: "Cat Food", category: "Pet Supplies", cost: 10 },
-  { name: "Cat Litter", category: "Pet Supplies", cost: 8 }
+  { name: "Cat Litter", category: "Pet Supplies", cost: 8 },
+
+  { name: "Backpack", category: "Clothing & Accessories", cost: 15 },
+  { name: "Purse", category: "Clothing & Accessories", cost: 10 },
+
+  { name: "Canned Goods", category: "Non-Perishable Foods", cost: 10 },
+  { name: "Meal Packs", category: "Non-Perishable Foods", cost: 10 },
+
+  { name: "Secure Parking Spot", category: "Safe Parking", cost: 300 },
+  { name: "Basic Amenities", category: "Safe Parking", cost: 100 },
+  { name: "Safety Monitoring", category: "Safe Parking", cost: 100 },
+
+  { name: "First Month Rent", category: "Move-in Costs", cost: 500 },
+  { name: "Deposit", category: "Move-in Costs", cost: 300 },
+  { name: "Utility Setup", category: "Move-in Costs", cost: 200 },
+
+  { name: "Microwave", category: "Kitchen Essential Equipment", cost: 500 },
+  { name: "Cookware", category: "Kitchen Essential Equipment", cost: 1000 },
+  { name: "Utensils", category: "Kitchen Essential Equipment", cost: 500 },
+  { name: "Dish Set", category: "Kitchen Essential Equipment", cost: 1000 },
+  { name: "Small Appliances", category: "Kitchen Essential Equipment", cost: 2000 }
 ];
 
 let donationAmount = 0;
