@@ -12,6 +12,10 @@ body {
 main {
   flex: 1;
 }
+.overlay {
+  margin-top: 40px; /* adjust as needed */
+}
+
 #categories {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -129,6 +133,7 @@ main {
 .give-button-container {
   margin-top: 2rem;
 }
+
 
 #giveButton {
   background-color: #80C400;
