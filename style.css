@@ -12,6 +12,12 @@ body {
 main {
   flex: 1;
 }
+#categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
 
 .bundle-button {
   position: relative;
@@ -146,4 +152,17 @@ main {
   font-size: 2rem;
   color: #453D36;
   margin: 0;
+}
+
+/* media stuff for the buttons layout*/
+@media (max-width: 768px) {
+  #categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  #categories {
+    grid-template-columns: 1fr;
+  }
 }

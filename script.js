@@ -23,6 +23,11 @@ const items = [
   { name: "Canned Goods", category: "Non-Perishable Foods", cost: 10 },
   { name: "Meal Packs", category: "Non-Perishable Foods", cost: 10 },
 
+  { name: "Diapers", category: "Baby Supplies", cost: 25 },
+  { name: "Wipes", category: "Baby Supplies", cost: 15 },
+  { name: "Pull-ups", category: "Baby Supplies", cost: 25 },
+
+
   { name: "Secure Parking Spot", category: "Safe Parking", cost: 300 },
   { name: "Basic Amenities", category: "Safe Parking", cost: 100 },
   { name: "Safety Monitoring", category: "Safe Parking", cost: 100 },
