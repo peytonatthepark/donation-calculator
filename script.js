@@ -1,47 +1,52 @@
 const items = [
-  { name: "Sleeping Bag", category: "Outreach Supplies", cost: 20 },
-  { name: "Tent", category: "Outreach Supplies", cost: 40 },
-  { name: "Blanket", category: "Outreach Supplies", cost: 10 },
-  { name: "Pillow", category: "Outreach Supplies", cost: 8 },
-  { name: "Tarp", category: "Outreach Supplies", cost: 12 },
 
-  { name: "Shampoo", category: "Hygiene Kits", cost: 5 },
-  { name: "Conditioner", category: "Hygiene Kits", cost: 5 },
-  { name: "Body Wash", category: "Hygiene Kits", cost: 5 },
-  { name: "Deodorant", category: "Hygiene Kits", cost: 4 },
-  { name: "Razors", category: "Hygiene Kits", cost: 3 },
-  { name: "Dental Care Products", category: "Hygiene Kits", cost: 6 },
-  { name: "Feminine Hygiene Kit", category: "Hygiene Kits", cost: 7 },
-
-  { name: "Dog Food", category: "Pet Supplies", cost: 12 },
-  { name: "Cat Food", category: "Pet Supplies", cost: 10 },
-  { name: "Cat Litter", category: "Pet Supplies", cost: 8 },
-
-  { name: "Backpack", category: "Clothing & Accessories", cost: 15 },
-  { name: "Purse", category: "Clothing & Accessories", cost: 10 },
-
-  { name: "Canned Goods", category: "Non-Perishable Foods", cost: 10 },
-  { name: "Meal Packs", category: "Non-Perishable Foods", cost: 10 },
-
+  
+  // Baby Supplies
   { name: "Diapers", category: "Baby Supplies", cost: 25 },
   { name: "Wipes", category: "Baby Supplies", cost: 15 },
   { name: "Pull-ups", category: "Baby Supplies", cost: 25 },
+  // Hygiene & Pet Care
+  { name: "Shampoo", category: "Hygiene & Pet Care", cost: 5 },
+  { name: "Conditioner", category: "Hygiene & Pet Care", cost: 5 },
+  { name: "Body Wash", category: "Hygiene & Pet Care", cost: 5 },
+  { name: "Deodorant", category: "Hygiene & Pet Care", cost: 4 },
+  { name: "Razors", category: "Hygiene & Pet Care", cost: 5 },
+  { name: "Dental Care Products", category: "Hygiene & Pet Care", cost: 10 },
+  { name: "Feminine Hygiene Kit", category: "Hygiene & Pet Care", cost: 20 },
+  { name: "Dog Food", category: "Hygiene & Pet Care", cost: 12 },
+  { name: "Cat Food", category: "Hygiene & Pet Care", cost: 12 },
+  { name: "Cat Litter", category: "Hygiene & Pet Care", cost: 12 },
+
+  // Daily Essentials
+  { name: "Sleeping Bag", category: "Daily Essentials", cost: 20 },
+  { name: "Tent", category: "Daily Essentials", cost: 40 },
+  { name: "Blanket", category: "Daily Essentials", cost: 10 },
+  { name: "Pillow", category: "Daily Essentials", cost: 8 },
+  { name: "Tarp", category: "Daily Essentials", cost: 12 },
+  { name: "Backpack", category: "Daily Essentials", cost: 15 },
+  { name: "Purse", category: "Daily Essentials", cost: 10 },
+  { name: "Canned Goods", category: "Daily Essentials", cost: 10 },
+  { name: "Meal Packs", category: "Daily Essentials", cost: 10 },
 
 
+  // Safe Parking
   { name: "Secure Parking Spot", category: "Safe Parking", cost: 300 },
   { name: "Basic Amenities", category: "Safe Parking", cost: 100 },
   { name: "Safety Monitoring", category: "Safe Parking", cost: 100 },
 
-  { name: "First Month Rent", category: "Move-in Costs", cost: 500 },
-  { name: "Deposit", category: "Move-in Costs", cost: 300 },
-  { name: "Utility Setup", category: "Move-in Costs", cost: 200 },
+  // Move-In Costs
+  { name: "First Month Rent", category: "Move-In Costs", cost: 500 },
+  { name: "Deposit", category: "Move-In Costs", cost: 300 },
+  { name: "Utility Setup", category: "Move-In Costs", cost: 200 },
 
-  { name: "Microwave", category: "Kitchen Essential Equipment", cost: 500 },
-  { name: "Cookware", category: "Kitchen Essential Equipment", cost: 1000 },
-  { name: "Utensils", category: "Kitchen Essential Equipment", cost: 500 },
-  { name: "Dish Set", category: "Kitchen Essential Equipment", cost: 1000 },
-  { name: "Small Appliances", category: "Kitchen Essential Equipment", cost: 2000 }
+  // Kitchen Essentials
+  { name: "Microwave", category: "Kitchen Essentials", cost: 500 },
+  { name: "Cookware", category: "Kitchen Essentials", cost: 1000 },
+  { name: "Utensils", category: "Kitchen Essentials", cost: 500 },
+  { name: "Dish Set", category: "Kitchen Essentials", cost: 1000 },
+  { name: "Small Appliances", category: "Kitchen Essentials", cost: 2000 }
 ];
+
 
 let donationAmount = 0;
 let remaining = 0;
