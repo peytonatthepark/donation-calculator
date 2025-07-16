@@ -68,7 +68,7 @@ main {
   background-size: cover;
   background-position: center -600px;
   background-repeat: no-repeat;
-  height: auto; /* Full screen height */
+  height: auto; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,10 +81,10 @@ main {
   border-radius: 8px;
   width: 90%;
   max-width: 400px;
-  margin: 2rem auto 0 auto; /* centers it */
+  margin: 2rem auto 0 auto; 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Barlow Semi Condensed', sans-serif;
-  border-top: 2px dashed #453D36; /* receipt tear line look */
+  border-top: 2px dashed #453D36; 
 }
 
 #summary h3 {
