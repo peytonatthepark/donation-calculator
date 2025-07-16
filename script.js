@@ -155,3 +155,54 @@ document.getElementById('giveButton').addEventListener('click', function () {
   const qgivUrl = `https://secure.qgiv.com/for/churchatthepark-test/?amount=${amount}`;
   window.open(qgivUrl, '_blank');
 });
+
+
+document.getElementById("quickBundleBtn").addEventListener("click", () => {
+  const essentialBundles = ["Daily Essentials", "Hygiene & Pet Care", "Safe Parking"];
+  let totalQuickBundleCost = 0;
+
+  // Step 1: Calculate total cost
+  essentialBundles.forEach(category => {
+    const itemsInCategory = items.filter(item => item.category === category);
+    const bundleCost = itemsInCategory.reduce((sum, item) => sum + item.cost, 0);
+    totalQuickBundleCost += bundleCost;
+  });
+
+  // Step 2: Set donation input value but DON'T trigger the input listener logic
+  const donationInput = document.getElementById("donationAmount");
+  donationInput.value = totalQuickBundleCost.toFixed(2);
+
+  // Step 3: Manually update state variables
+  donationAmount = totalQuickBundleCost;
+  remaining = totalQuickBundleCost;
+  for (const key in selectedBundles) {
+    delete selectedBundles[key];
+  }
+
+  // Step 4: Add bundles if they fit
+  essentialBundles.forEach(category => {
+    const itemsInCategory = items.filter(item => item.category === category);
+    const bundleCost = itemsInCategory.reduce((sum, item) => sum + item.cost, 0);
+
+    if (bundleCost <= remaining) {
+      selectedBundles[category] = {
+        count: 1,
+        cost: bundleCost
+      };
+      remaining -= bundleCost;
+    }
+  });
+
+  // Step 5: Update UI
+  updateCalculator();
+
+  // Step 6: Scroll to Give button
+  setTimeout(() => {
+    const giveBtn = document.getElementById("giveButton");
+    if (giveBtn) {
+      giveBtn.scrollIntoView({ behavior: "smooth", block: "center" });
+      giveBtn.focus();
+    }
+  }, 100);
+});
+
