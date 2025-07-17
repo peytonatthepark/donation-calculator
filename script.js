@@ -1,33 +1,37 @@
 // This data structure defines all available donation items.
 // Grouped by category with cost; used to build the UI and calculate bundles.
 const items = [
-  // Baby Supplies
-  { name: "Diapers", category: "Baby Supplies", cost: 25 },
-  { name: "Wipes", category: "Baby Supplies", cost: 15 },
-  { name: "Pull-ups", category: "Baby Supplies", cost: 25 },
   
-  // Hygiene & Pet Care
-  { name: "Shampoo", category: "Hygiene & Pet Care", cost: 5 },
-  { name: "Conditioner", category: "Hygiene & Pet Care", cost: 5 },
-  { name: "Body Wash", category: "Hygiene & Pet Care", cost: 5 },
-  { name: "Deodorant", category: "Hygiene & Pet Care", cost: 4 },
-  { name: "Razors", category: "Hygiene & Pet Care", cost: 5 },
-  { name: "Dental Care Products", category: "Hygiene & Pet Care", cost: 10 },
-  { name: "Feminine Hygiene Kit", category: "Hygiene & Pet Care", cost: 20 },
-  { name: "Dog Food", category: "Hygiene & Pet Care", cost: 12 },
-  { name: "Cat Food", category: "Hygiene & Pet Care", cost: 12 },
-  { name: "Cat Litter", category: "Hygiene & Pet Care", cost: 12 },
+  // food button 
+  { name: "Canned Goods", category: "Feed Hope", cost: 10 },
+  { name: "Meal Packs", category: "Feed Hope", cost: 15 },
 
-  // Daily Essentials
-  { name: "Sleeping Bag", category: "Daily Essentials", cost: 20 },
-  { name: "Tent", category: "Daily Essentials", cost: 40 },
-  { name: "Blanket", category: "Daily Essentials", cost: 10 },
-  { name: "Pillow", category: "Daily Essentials", cost: 8 },
-  { name: "Tarp", category: "Daily Essentials", cost: 12 },
-  { name: "Backpack", category: "Daily Essentials", cost: 15 },
-  { name: "Purse", category: "Daily Essentials", cost: 10 },
-  { name: "Canned Goods", category: "Daily Essentials", cost: 10 },
-  { name: "Meal Packs", category: "Daily Essentials", cost: 10 },
+  //aplliction cover
+  { name: "Applications Fees", category: "Cover Application Fee's", cost: 50},
+  // Daily Essentials (combined)
+  { name: "Shampoo", category: "Daily Essentials", cost: 5 },
+  { name: "Conditioner", category: "Daily Essentials", cost: 5 },
+  { name: "Body Wash", category: "Daily Essentials", cost: 5 },
+  { name: "Deodorant", category: "Daily Essentials", cost: 5 },
+  { name: "Razors", category: "Daily Essentials", cost: 5 },
+  { name: "Dental Care Products", category: "Daily Essentials", cost: 5 },
+  { name: "Feminine Hygiene Kit", category: "Daily Essentials", cost: 5 },
+  { name: "Dog Food", category: "Daily Essentials", cost: 5 },
+  { name: "Cat Food", category: "Daily Essentials", cost: 5 },
+  { name: "Cat Litter", category: "Daily Essentials", cost: 5 },
+  { name: "Sleeping Bag", category: "Daily Essentials", cost: 5 },
+  { name: "Tent", category: "Daily Essentials", cost: 5 },
+  { name: "Blanket", category: "Daily Essentials", cost: 5 },
+  { name: "Pillow", category: "Daily Essentials", cost: 5 },
+  { name: "Tarp", category: "Daily Essentials", cost: 5 },
+  { name: "Backpack", category: "Daily Essentials", cost: 5 },
+  { name: "Purse", category: "Daily Essentials", cost: 5 },
+  { name: "Diapers", category: "Daily Essentials", cost: 5 },
+  { name: "Wipes", category: "Daily Essentials", cost: 5 },
+  { name: "Pull-ups", category: "Daily Essentials", cost: 5 },
+  
+  
+  
 
   // Safe Parking
   { name: "Secure Parking Spot", category: "Safe Parking", cost: 300 },
@@ -118,11 +122,58 @@ function updateCalculator() {
 
   // Display the selected bundles in the summary list
   for (const [category, data] of Object.entries(selectedBundles)) {
-    const li = document.createElement("li");
-    const totalCost = data.cost * data.count;
-    li.textContent = `${category} Bundle x${data.count} - $${totalCost.toFixed(2)}`;
-    bundleList.appendChild(li);
-  }
+  const li = document.createElement("li");
+    
+  li.style.display = "flex";
+  li.style.justifyContent = "space-between";
+  li.style.alignItems = "center";
+
+  const totalCost = data.cost * data.count;
+
+  // Bundle text
+  const text = document.createElement("span");
+  text.textContent = `${category} Bundle x${data.count} - $${totalCost.toFixed(2)}`;
+
+  // Delete (X) button
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "Remove";
+  removeBtn.style.marginLeft = "12px";
+  removeBtn.style.padding = "2px 8px";
+  removeBtn.style.backgroundColor = "#EDEAE4"; // Soft beige tone
+  removeBtn.style.border = "1px solid #aaa";
+  removeBtn.style.borderRadius = "12px";
+  removeBtn.style.color = "#453D36"; // Dark brown (your brand color)
+  removeBtn.style.cursor = "pointer";
+  removeBtn.style.fontSize = "0.85rem";
+  removeBtn.style.fontFamily = "'Barlow Semi Condensed', sans-serif";
+  removeBtn.style.transition = "all 0.2s ease";
+
+  removeBtn.addEventListener("mouseover", () => {
+    removeBtn.style.backgroundColor = "#d8d3cb";
+  });
+
+  removeBtn.addEventListener("mouseout", () => {
+    removeBtn.style.backgroundColor = "#EDEAE4";
+  });
+
+
+  removeBtn.addEventListener("click", () => {
+    // Remove 1 bundle
+    if (selectedBundles[category].count > 1) {
+      selectedBundles[category].count -= 1;
+      remaining += selectedBundles[category].cost;
+    } else {
+      remaining += selectedBundles[category].cost;
+      delete selectedBundles[category];
+    }
+    updateCalculator();
+  });
+
+  li.appendChild(text);
+  li.appendChild(removeBtn);
+  bundleList.appendChild(li);
+}
+
 
   // Enable Give button only if a valid amount and at least one bundle selected
 const giveButton = document.getElementById("giveButton");
@@ -130,15 +181,15 @@ const giveButton = document.getElementById("giveButton");
 // Update button label & state
 if (donationAmount === 0) {
   giveButton.disabled = true;
-  giveButton.textContent = "Quick Give";
+  giveButton.textContent = "Give";//please chnage to quick giv way better experience 
   giveButton.style.opacity = "0.5";
 } else if (remaining === donationAmount) {
   giveButton.disabled = false;
-  giveButton.textContent = "Quick Give";
+  giveButton.textContent = "Give";// same as give above 
   giveButton.style.opacity = "1";
 } else {
   giveButton.disabled = false;
-  giveButton.textContent = "Give";
+  giveButton.textContent = "Give";// dont chnage this give 
   giveButton.style.opacity = "1";
 }
 }
@@ -158,7 +209,7 @@ document.getElementById('giveButton').addEventListener('click', function () {
 
 
 document.getElementById("quickBundleBtn").addEventListener("click", () => {
-  const essentialBundles = ["Daily Essentials", "Hygiene & Pet Care", "Safe Parking"];
+  const essentialBundles = ["Feed Hope", "Cover Application Fee's", "Daily Essentials"];
   let totalQuickBundleCost = 0;
 
   // Step 1: Calculate total cost

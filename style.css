@@ -64,9 +64,9 @@ main {
 }
 
 .hero-section {
-  background-image: url('images/CATPFaded logo trees-02.png');
+  background-image: url('images/background.avif');
   background-size: cover;
-  background-position: center -600px;
+  background-position: center 30%;
   background-repeat: no-repeat;
   height: auto; 
   display: flex;
@@ -155,9 +155,24 @@ main {
 .hero-section h1 {
   font-family: 'Arvo', serif;
   font-size: 2rem;
-  color: #453D36;
+  color: #FFF5D9;
   margin: 0;
 }
+
+h1 {
+  color: #FFF5D9;
+  font-size: 3rem;
+  text-shadow:
+    -1px -1px 0 #453D36,
+     1px -1px 0 #453D36,
+    -1px  1px 0 #453D36,
+     1px  1px 0 #453D36,
+     0px -2px 0 #453D36,
+     0px  2px 0 #453D36,
+    -2px  0px 0 #453D36,
+     2px  0px 0 #453D36;
+}
+
 
 /* media stuff for the buttons layout*/
 @media (max-width: 768px) {
