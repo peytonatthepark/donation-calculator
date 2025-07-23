@@ -191,7 +191,14 @@ document.getElementById('giveButton').addEventListener('click', function () {
 
   // ⚠️ Update this URL when ready for production (currently test environment)
   const qgivUrl = `https://secure.qgiv.com/for/churchatthepark-test/?amount=${amount}`;
-  window.open(qgivUrl, '_blank');
+  
+  //external link
+  //window.open(qgivUrl, '_blank');
+//interbal link
+  window.location.href = qgivUrl;
+
+  
+
 });
 
 
