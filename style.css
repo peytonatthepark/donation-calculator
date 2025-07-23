@@ -28,7 +28,7 @@ main {
   margin: 1rem;
   padding: 1rem 2rem;
   font-size: 1.2rem;
-  background-color: #80C400;
+  background-color: #889C3A;
   color: white;
   border: none;
   border-radius: 8px;
@@ -66,7 +66,7 @@ main {
 .hero-section {
   background-image: url('images/background.avif');
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 40%;
   background-repeat: no-repeat;
   height: auto; 
   display: flex;
@@ -76,7 +76,7 @@ main {
 }
 
 #summary {
-  background-color: #EDEAE4;
+  background-color: #f2cf40;
   padding: 1.5rem;
   border-radius: 8px;
   width: 90%;
@@ -98,6 +98,7 @@ main {
   list-style: none;
   padding: 0;
   margin: 0 0 1rem 0;
+  color: #453D36;
 }
 
 #summary p {
@@ -108,7 +109,7 @@ main {
 
 #calculator {
   padding: 2rem;
-  text-align: center;
+  /*text-align: center;*/
 }
 
 /* Donation Amount Input */
@@ -136,14 +137,15 @@ main {
 
 
 #giveButton {
-  background-color: #80C400;
-  color: white;
+  background-color: #889C3A;
+  color: #fff;
   border: none;
   font-size: 1.2rem;
   padding: 1rem 2rem;
   border-radius: 8px;
   cursor: pointer;
   font-family: 'Barlow Semi Condensed', sans-serif;
+  
 }
 
 

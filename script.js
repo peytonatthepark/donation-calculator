@@ -9,26 +9,13 @@ const items = [
   //aplliction cover
   { name: "Applications Fees", category: "Cover Application Fee's", cost: 50},
   // Daily Essentials (combined)
-  { name: "Shampoo", category: "Daily Essentials", cost: 5 },
-  { name: "Conditioner", category: "Daily Essentials", cost: 5 },
-  { name: "Body Wash", category: "Daily Essentials", cost: 5 },
-  { name: "Deodorant", category: "Daily Essentials", cost: 5 },
-  { name: "Razors", category: "Daily Essentials", cost: 5 },
-  { name: "Dental Care Products", category: "Daily Essentials", cost: 5 },
-  { name: "Feminine Hygiene Kit", category: "Daily Essentials", cost: 5 },
-  { name: "Dog Food", category: "Daily Essentials", cost: 5 },
-  { name: "Cat Food", category: "Daily Essentials", cost: 5 },
-  { name: "Cat Litter", category: "Daily Essentials", cost: 5 },
-  { name: "Sleeping Bag", category: "Daily Essentials", cost: 5 },
-  { name: "Tent", category: "Daily Essentials", cost: 5 },
-  { name: "Blanket", category: "Daily Essentials", cost: 5 },
-  { name: "Pillow", category: "Daily Essentials", cost: 5 },
-  { name: "Tarp", category: "Daily Essentials", cost: 5 },
-  { name: "Backpack", category: "Daily Essentials", cost: 5 },
-  { name: "Purse", category: "Daily Essentials", cost: 5 },
-  { name: "Diapers", category: "Daily Essentials", cost: 5 },
-  { name: "Wipes", category: "Daily Essentials", cost: 5 },
-  { name: "Pull-ups", category: "Daily Essentials", cost: 5 },
+  
+  { name: "Sleeping Bag", category: "Outreach Essentials", cost: 15 },
+  { name: "Tent", category: "Outreach Essentials", cost: 25 },
+  { name: "Blanket", category: "Outreach Essentials", cost: 15 },
+  { name: "Pillow", category: "Outreach Essentials", cost: 15 },
+  { name: "Tarp", category: "Outreach Essentials", cost: 15 },
+  { name: "Backpack", category: "Outreach Essentials", cost: 15 },
   
   
   
@@ -209,7 +196,7 @@ document.getElementById('giveButton').addEventListener('click', function () {
 
 
 document.getElementById("quickBundleBtn").addEventListener("click", () => {
-  const essentialBundles = ["Feed Hope", "Cover Application Fee's", "Daily Essentials"];
+  const essentialBundles = ["Feed Hope", "Cover Application Fee's", "Outreach Essentials"];
   let totalQuickBundleCost = 0;
 
   // Step 1: Calculate total cost
