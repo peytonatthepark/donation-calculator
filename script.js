@@ -18,7 +18,6 @@ const items = [
   { name: "Backpack", category: "Outreach Essentials", cost: 15 },
   
   
-  
 
   // Safe Parking
   { name: "Secure Parking Spot", category: "Safe Parking", cost: 300 },
@@ -189,7 +188,7 @@ document.getElementById('giveButton').addEventListener('click', function () {
     return;
   }
 
-  // ⚠️ Update this URL when ready for production (currently test environment)
+  // ⚠️ Update this URL when ready for production (currently test environment)// dont switch ?amount=$amount
   const qgivUrl = `https://secure.qgiv.com/for/churchatthepark-test/?amount=${amount}`;
   
   //external link
