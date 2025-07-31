@@ -3,11 +3,11 @@
 const items = [
   
   // food button 
-  { name: "Canned Goods", category: "Feed Hope", cost: 10 },
-  { name: "Meal Packs", category: "Feed Hope", cost: 15 },
+  { name: "Canned Goods", category: "Food Boxes", cost: 10 },
+  { name: "Meal Packs", category: "Food Boxes", cost: 15 },
 
   //aplliction cover
-  { name: "Applications Fees", category: "Cover Application Fee's", cost: 50},
+  { name: "Applications Fees", category: "Housing Application Fees", cost: 50},
   // Daily Essentials (combined)
   
   { name: "Sleeping Bag", category: "Outreach Essentials", cost: 15 },
@@ -16,7 +16,6 @@ const items = [
   { name: "Pillow", category: "Outreach Essentials", cost: 15 },
   { name: "Tarp", category: "Outreach Essentials", cost: 15 },
   { name: "Backpack", category: "Outreach Essentials", cost: 15 },
-  
   
 
   // Safe Parking
@@ -202,7 +201,7 @@ document.getElementById('giveButton').addEventListener('click', function () {
 
 
 document.getElementById("quickBundleBtn").addEventListener("click", () => {
-  const essentialBundles = ["Feed Hope", "Cover Application Fee's", "Outreach Essentials"];
+  const essentialBundles = ["Food Boxes", "Housing Application Fees", "Outreach Essentials"];
   let totalQuickBundleCost = 0;
 
   // Step 1: Calculate total cost
