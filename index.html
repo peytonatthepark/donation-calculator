@@ -38,7 +38,14 @@
 
   <div class="donation-input">
     <label for="donationAmount">Enter Your Donation Amount:</label><br/>
-    <input type="number" id="donationAmount" min="1" placeholder="$25" />
+    <input
+      type="text"
+      id="donationAmount"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      placeholder="$25"
+      oninput="sanitizeInput(this)"
+    />
   </div>
   <div style="margin-bottom: 1rem;">
     <button id="quickBundleBtn" style="background-color:#453D36; color:white; padding: 0.75rem 1.5rem; border:none; border-radius: 8px; font-family: 'Barlow Semi Condensed'; font-size: 1rem; cursor: pointer;">

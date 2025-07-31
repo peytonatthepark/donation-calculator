@@ -36,6 +36,11 @@ const items = [
   { name: "Small Appliances", category: "Kitchen Essentials", cost: 2000 }
 ];
 
+// 🧼 Sanitize donation input to allow only digits
+function sanitizeInput(input) {
+  input.value = input.value.replace(/[^\d]/g, '');
+}
+
 // Global state variables
 let donationAmount = 0;
 let remaining = 0;
